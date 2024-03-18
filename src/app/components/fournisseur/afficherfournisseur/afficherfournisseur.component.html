@@ -1,0 +1,20 @@
+<div class="card">
+
+    <div class="card-body">
+
+
+        <h2>{{fournisseur?.nom}} {{fournisseur?.prenom}}</h2>
+
+        <p>{{ 'Phone' | translate }}: {{fournisseur?.telephone}}</p>
+        <p>{{ 'Email' | translate }}: {{fournisseur?.email}}</p>
+        <p>{{ 'Address' | translate }}: {{fournisseur?.adresse}}</p>
+        <p>{{ 'type' | translate }}: {{fournisseur?.type}}</p>
+        <p>{{ 'code' | translate }}: {{fournisseur?.code}}</p>
+
+        <p>{{ 'description' | translate }}: {{fournisseur?.description}}</p>
+
+        <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+        <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+    </div>
+
+</div>

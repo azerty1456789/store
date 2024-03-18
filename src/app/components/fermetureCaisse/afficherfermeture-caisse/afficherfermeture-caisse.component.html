@@ -1,0 +1,29 @@
+<div class="card">
+
+    <div class="card-body">
+        
+          <h2>{{ 'Fermeturedecaisse' | translate }} {{fermeturecaisse?.id}}</h2>
+          <p>{{ 'dateouverture' | translate }}: {{fermeturecaisse?.dateouverture | date: 'dd/MM/yyyy à HH:mm:ss'}}</p>
+
+          <p>{{ 'datefermeture' | translate }}: {{fermeturecaisse?.datefermeture | date: 'dd/MM/yyyy à HH:mm:ss'}}</p>
+          <p>{{ 'Montantdedébut' | translate }}: {{fermeturecaisse?.montantdebut}}</p>
+          <p>{{ 'cachier' | translate }}: {{fermeturecaisse?.idemployee }}-{{username}} </p>
+
+          <p>{{ 'Totalcash' | translate }}: {{fermeturecaisse?.totalcash}}</p>
+          <p>{{ 'ecartcash' | translate }}: {{fermeturecaisse?.ecartcash}}</p>
+
+
+          <p>{{ 'Totalcheck' | translate }}: {{fermeturecaisse?.totalcheck}}</p>
+          <p>{{ 'ecartcheck' | translate }}: {{fermeturecaisse?.ecartcheck}}</p>
+
+          <p>{{ 'Totalticketresto' | translate }}: {{fermeturecaisse?.totalticketresto}}</p>
+          <p>{{ 'ecartticketresto' | translate }}: {{fermeturecaisse?.ecartticketresto}}</p>
+
+          <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+          <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+        
+    </div>
+  </div>
+
+        
+        

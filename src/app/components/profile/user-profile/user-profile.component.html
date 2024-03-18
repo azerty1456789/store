@@ -1,0 +1,28 @@
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-6">
+            <h2>{{ 'UserProfile' | translate }}</h2>
+            <p>{{ 'Name' | translate }}: {{ currentUser.name }} </p>
+            <p>{{ 'LastName' | translate }}:  {{ currentUser.lastName }} </p>
+            <p>{{ 'Email' | translate }}: {{ currentUser.email }}</p>
+            <p>{{ 'Role' | translate }}: {{ currentUser.role }}</p>
+            <p>{{ 'ID' | translate }}: {{ currentUser.id }}</p>
+            <p>{{ 'Phone' | translate }}: {{ currentUser.phone }}</p>
+            
+          </div>
+
+
+
+          <div class="col-md-6">
+            <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'ModifyPassword' | translate }}</button>
+
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>

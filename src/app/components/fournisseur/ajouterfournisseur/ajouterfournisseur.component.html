@@ -1,0 +1,39 @@
+<form (submit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">{{ 'FirstName' | translate }}</label>
+        <input type="text" class="form-control" id="firstname" name="name" [(ngModel)]="newFournisseur.nom" >
+
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">{{ 'LastName' | translate }}</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="newFournisseur.prenom" >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">{{ 'Phone' | translate }}</label>
+      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="newFournisseur.telephone">
+    </div>
+    <div class="form-group">
+      <label for="email">{{ 'Email' | translate }}</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newFournisseur.email" >
+    </div>
+    <div class="form-group">
+      <label for="address">{{ 'Address' | translate }}</label>
+      <input type="text" class="form-control" id="addresse" name="addresse" [(ngModel)]="newFournisseur.adresse">
+    </div>
+    <div class="form-group">
+      <label for="Type">{{ 'type' | translate }}</label>
+      <input type="text" class="form-control" id="Type" name="Type" [(ngModel)]="newFournisseur.type">
+    </div>
+    <div class="form-group">
+      <label for="Code">{{ 'code' | translate }}</label>
+      <input type="number" class="form-control" id="Code" name="Code" [(ngModel)]="newFournisseur.code" >
+    </div>
+    <div class="form-group">
+        <label for="description">{{ 'description' | translate }}</label>
+        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newFournisseur.description" >
+      </div>
+    <button type="submit" class="btn btn-primary">{{ 'AddProvider' | translate }}</button>
+  </form>

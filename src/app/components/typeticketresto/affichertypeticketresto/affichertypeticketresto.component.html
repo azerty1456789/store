@@ -1,0 +1,13 @@
+<div class="card">
+
+    <div class="card-body" *ngIf="typeTicketResto">
+        
+          <h2>{{typeTicketResto.nom}} </h2>
+          <p>{{ 'montant' | translate }}: {{typeTicketResto.montant}}</p>
+          <p>{{ 'pourcentage' | translate }}: {{100-typeTicketResto.pourcentage}}</p>
+
+          <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+          <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+    
+    </div>
+  </div>

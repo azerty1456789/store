@@ -1,0 +1,43 @@
+export const locale = {
+	lang: 'de',
+	data: {
+		ProductName: "اسم المنتج",
+BarCode: "الرمز الشريطي",
+printQRcode: "طباعة رمز الاستجابة السريعة",
+printbarcode: "طباعة الرمز الشريطي",
+Color: "اللون",
+Description: "الوصف",
+ProviderPrice: "سعر المورد",
+PacketPrice: "سعر الصندوق",
+PriceReduction: "تخفيض السعر",
+Tax: "الضريبة",
+ExpirationDate: "تاريخ الانتهاء",
+Category: "الفئة",
+ispieceof: "جزء من",
+QuantityinPacket: "الكمية في العلبة",
+Rangements: "التخزين",
+stock: "المخزون",
+Modify: "تعديل",
+Delete: "حذف",
+Enablescanner: "تفعيل الماسح الضوئي",
+NoDeviceSelected: "لم يتم اختيار جهاز",
+Result: "النتيجة",
+Couldntcheckbarcode: "تعذر التحقق من الباركود",
+Price: "السعر",
+Taxe: "الضريبة",
+IsPieceof: "جزء من",
+IsPiece: "جزء",
+colonne: "عمود",
+photo: "الصورة",
+AddProduct: "إضافة منتج",
+Show: "عرض",
+Barcode: "الرمز الشريطي",
+Name: "الاسم",
+taxe: "الضريبة",
+updateProduct: "تحديث المنتج",
+Close:"إغلاق",
+quickAddProduit:"إضافة سريعة للمنتج"
+
+	}
+	
+}

@@ -1,0 +1,27 @@
+<form (submit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nom">{{ 'Name' | translate }}</label>
+        <input type="text" class="form-control" id="nom" name="nom"  [(ngModel)]="newDepot.nom" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="adresse">{{ 'adresse' | translate }}</label>
+        <input type="text" class="form-control" id="adresse" name="adresse"  [(ngModel)]="newDepot.adresse" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+          <label for="type">{{ 'type' | translate }}</label>
+          <select id="type" name="type" class="form-control" [(ngModel)]="newDepot.type">
+            <option [value]="'vente'" >{{ 'SalesDepot' | translate }}</option>
+            <option [value]="'stockage'">{{ 'StorageDepot' | translate }}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="description">{{ 'description' | translate }}</label>
+          <input type="text" class="form-control" id="description" name="description"  [(ngModel)]="newDepot.description" >
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ 'AddDepot' | translate }}</button>
+  </form>
+  

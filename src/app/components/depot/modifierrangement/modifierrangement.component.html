@@ -1,0 +1,40 @@
+<form (submit)="onModify()">
+    <div *ngIf="rangement">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="name">{{ 'Name' | translate }}</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="rangement.nom">
+            </div>
+
+   
+           
+            <div class="form-group col-md-6">
+                <label for="description">{{ 'Description' | translate }}</label>
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="rangement.description">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="colonne">{{ 'colonne' | translate }}: </label>
+            <select id="colonne" name="colonne" class="form-control" [(ngModel)]="rangement.idcolonne">
+                <option *ngFor="let colonne of colonnes" [value]="colonne.id" [selected]="colonne.id === colonne.idcolonne">{{ colonne.nom }}</option>
+              </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="produit">{{ 'produit' | translate }}</label>
+            <input type="text" class="form-control" id="produit" name="produit" [(ngModel)]="rangement.idproduit" >
+        </div>
+        <div class="form-group">
+          <label for="stockproduit">{{ 'stockproduit' | translate }}</label>
+          <input type="text" class="form-control" id="stockproduit" name="stockproduit" [(ngModel)]="rangement.stock" >
+      </div>  
+      
+      <div class="form-group">
+        <label for="stockpiece">{{ 'stockpiece' | translate }}</label>
+        <input type="text" class="form-control" id="stockpiece" name="stockpiece" [(ngModel)]="rangement.stockpiece" >
+    </div>  
+        <button type="submit" class="btn btn-primary">{{ 'Updaterangement' | translate }}</button>
+    </div>
+    

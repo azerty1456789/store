@@ -1,0 +1,54 @@
+    <form (submit)="onSubmit()">
+      <div *ngIf="client">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="firstName">{{ 'firstName' | translate }}</label>
+          <input type="text" class="form-control" id="firstname" name="name"  [(ngModel)]="client.name" >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">{{ 'lastName' | translate }}</label>
+          <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="client.lastname" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="priority">{{ 'Priority' | translate }}</label>
+            <select id="priority" name="priority" class="form-control" [(ngModel)]="client.priority">
+              <option [value]="'low'" >{{ 'Low' | translate }}</option>
+              <option [value]="'medium'">{{ 'Medium' | translate }}</option>
+              <option [value]="'high'">{{ 'High' | translate }}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="gender">{{ 'Gender' | translate }}</label>
+            <select id="gender" name="gender" class="form-control" [(ngModel)]="client.gender">
+              <option [value]="'male'">{{ 'Male' | translate }}</option>
+              <option [value]="'Female'" >{{ 'Female' | translate }}</option>
+            </select>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">{{ 'Phone' | translate }}</label>
+        <input type="text" class="form-control" id="phone" name="phone"  [(ngModel)]="client.phone">
+      </div>
+      <div class="form-group">
+        <label for="email">{{ 'Email' | translate }}</label>
+        <input type="email" class="form-control" id="email" name="email"  [(ngModel)]="client.email">
+      </div>
+      <div class="form-group">
+        <label for="address">{{ 'Address' | translate }}</label>
+        <input type="text" class="form-control" id="addresse" name="addresse"  [(ngModel)]="client.adresse">
+      </div>
+      <div class="form-group">
+        <label for="photo">{{ 'photo' | translate }}</label>
+        <input type="text" class="form-control" id="photo" name="photo"  [(ngModel)]="client.photo">
+      </div>
+      <div class="form-group">
+        <label for="credit">{{ 'Credit' | translate }}</label>
+        <input type="number" class="form-control" id="credit" name="credit"  [(ngModel)]="client.credit" >
+      </div>
+      <button type="submit" class="btn btn-primary">{{ 'update' | translate }}</button>
+      </div>
+    </form>
+    

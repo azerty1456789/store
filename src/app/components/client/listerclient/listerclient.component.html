@@ -1,0 +1,54 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'Show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'firstName' | translate }}</th>
+        <th>{{ 'lastName' | translate }}</th>
+        <th>{{ 'Priority' | translate }}</th>
+        <th>{{ 'Gender' | translate }}</th>
+        <th>{{ 'Phone' | translate }}</th>
+        <th>{{ 'Email' | translate }}</th>
+        <th>{{ 'Address' | translate }}</th>
+        <th>{{ 'Credit' | translate }}</th>
+        <!--<th>Action</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+
+          <td><a [routerLink]="['/afficherclient', client.id]">{{client.id}}</a></td>
+
+        <td>{{ client.name }}</td>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.priority }}</td>
+        <td>{{ client.gender }}</td>
+        <td>{{ client.phone }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.adresse }}</td>
+        <td>{{ client.credit }}</td>
+        <!--<td>
+            <button class="btn btn-danger btn-sm d-inline" (click)="deleteClient(client)">Delete</button>
+            <button class="btn btn-primary btn-sm d-inline" (click)="modifyClient(client)">Modify</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>
+  
+  
+
+

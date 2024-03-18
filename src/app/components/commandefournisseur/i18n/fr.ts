@@ -1,0 +1,27 @@
+export const locale = {
+	lang: 'fr',
+	data: {
+		numero:"Commande Fournisseur n°",
+		Date:"Date",
+		etat:"état",
+		Tél:"Tél",
+		Lignesdeproduits:"Lignes de produits",
+		Produit:"Produit",
+		Quantité:"Quantité",
+		Prixunitaire:"Prix unitaire",
+		Total:"Total",
+		Modify:"Modifier",
+Delete:"Supprimer",
+Show:"Afficher",
+email:"Email",
+updatecommande:"Mettre à jour la commande",
+cachier:"cachier",
+fournisseur:"Fournisseur",
+payée :"Payée",
+barcode:"Code à barres",
+Addcommande:"Ajouter une commande",
+Remove:"Supprimer",
+Add:"Ajouter",
+
+	},
+}

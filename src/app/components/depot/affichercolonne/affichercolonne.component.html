@@ -1,0 +1,40 @@
+
+  <div class="card">
+
+    <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-12">
+          <h2> {{ 'colonne' | translate }}: {{depot?.nom}} / {{colonne?.nom}} </h2>
+          <p> {{ 'description' | translate }}: {{colonne?.description}}</p>
+
+          <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+          <button class="btn btn-danger mr-2" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+          <button class="btn btn-success" (click)="onCreateRangement()">{{ 'AddRangement' | translate }}</button>
+
+</div>
+<hr>
+
+        <h3>{{ 'rangements' | translate }}</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{{ 'Name' | translate }}</th>
+              <th>{{ 'Description' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rangement of rangements">
+              <td><a [routerLink]="['/afficherrangement', rangement.id]">{{rangement.id}}</a></td>
+              <td>{{depot?.nom}} / {{colonne?.nom}} / {{ rangement.nom }}</td>
+              <td>{{ rangement.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      </div>
+    </div>
+ 

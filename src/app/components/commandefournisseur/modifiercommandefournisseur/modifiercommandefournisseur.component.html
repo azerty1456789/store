@@ -1,0 +1,89 @@
+ <div *ngIf="commandeFournisseur">
+    <h2>{{ 'numero' | translate }} {{commandeFournisseur?.id}}</h2>
+  <!--  <div class="form-group" >
+      <label for="fournisseur">Fournisseur:</label>
+      <select class="form-control" id="fournisseur" name="fournisseur"
+        [(ngModel)]="commandeFournisseur.idfournisseur">
+        <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.id">{{fournisseur.id}} -{{ fournisseur.nom }}</option>
+      </select>
+    </div>-->
+    <p *ngIf="fournisseur">{{ 'fournisseur' | translate }}: {{ fournisseur.nom }} </p>
+
+
+    <div class="form-group">
+      <label for="etat">{{ 'etat' | translate }}:</label>
+      <select class="form-control" id="etat" name="etat"
+              [(ngModel)]="etat">
+        <option *ngFor="let etat of etats" [value]="etat">{{etat}}</option>
+      </select>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="payee" name="payee"
+        [(ngModel)]="commandeFournisseur.payee" required>
+        <label for="payee" class="form-check-label">{{ 'payée' | translate }}</label>
+
+
+    </div>
+  
+    <hr> <!-- optional visual separator -->
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="produitId">{{ 'barcode' | translate }}:</label>
+        <input type="number" class="form-control" id="produitId" name="produitId" [(ngModel)]="barcode" >
+      </div>
+    
+      <div class="form-group col-md-5">
+        <label for="quantite">{{ 'Quantité' | translate }}:</label>
+        <input type="number" class="form-control" name="quantite" required [(ngModel)]="commandeLigneFournisseur.quantite">
+      </div>
+    
+  
+    
+      <div class="form-group col-md-1 align-self-end">
+        <button type="button" class="btn btn-primary btn-block" (click)="addCommandeLigneFournisseur()">{{ 'Add' | translate }}</button>
+  
+      </div>
+    </div>
+  
+  
+    <table class="table" *ngIf="commandeFournisseur.commandelignefournisseur[0]">
+      <thead>
+        <tr>
+          <th>{{ 'Produit' | translate }}</th>
+          <th>{{ 'Quantité' | translate }}</th>
+          <th>{{ 'Prixunitaire' | translate }}</th>
+          <th>{{ 'Total' | translate }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commandeLigneFournisseur of commandeLigneFournisseurs">
+          <td>{{commandeLigneFournisseur?.produit?.nom}}</td>
+          <td><input type="number" [(ngModel)]="commandeLigneFournisseur.quantite" (ngModelChange)="updateTotal()"
+            [ngModelOptions]="{standalone: true}" /></td>
+          <td> <input type="number" [(ngModel)]="commandeLigneFournisseur.prix" (ngModelChange)="updateTotal()"
+            [ngModelOptions]="{standalone: true}" /></td>
+  
+          <td>{{commandeLigneFournisseur?.quantite*commandeLigneFournisseur?.prix}}</td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeLigne(commandeLigneFournisseur)">{{ 'Remove' | translate }}</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><h4>{{ total }}</h4></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  <hr> <!-- optional visual separator -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ 'updatecommande' | translate }}</button>
+    </div>
+</div>
+  

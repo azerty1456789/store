@@ -1,0 +1,31 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'Show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'Date' | translate }}</th>
+        <th>{{ 'fournisseur' | translate }}</th>
+        <th>{{ 'Total' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandefournisseurs | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+        <td><a [routerLink]="['/affichercommandefournisseur', commande.id]">{{ commande.id }} </a></td>
+        <td>{{ commande.datecommande | date: 'dd/MM/yyyy à HH:mm:ss' }}</td>
+        <td>{{ commande.idfournisseur }} - {{getFournisseurName(commande.idfournisseur)}} </td>
+        <td>{{ commande.total }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>

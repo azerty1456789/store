@@ -1,0 +1,23 @@
+    <div class="card">
+
+      <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-6">
+            <h2>{{client?.name}} {{client?.lastname}}</h2>
+            <p>{{ 'Priority' | translate }}: {{client?.priority}}</p>
+            <p>{{ 'Gender' | translate }}: {{client?.gender}}</p>
+            <p>{{ 'Phone' | translate }}: {{client?.phone}}</p>
+            <p>{{ 'Email' | translate }}: {{client?.email}}</p>
+            <p>{{ 'Address' | translate }}: {{client?.adresse}}</p>
+            <p>{{ 'Credit' | translate }}: {{client?.credit}}</p>
+            <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+            <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+          </div>
+          <div class="col-md-6">
+            <img class="img-thumbnail" src="{{client?.photo}}" alt="Client Photo">
+          </div>
+        </div>
+      </div>
+    </div>
+  

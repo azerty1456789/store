@@ -1,0 +1,119 @@
+    <form (submit)="onSubmit()">
+      <div *ngIf="produit">
+        <ngb-carousel *ngIf="produit?.photoproduits.length>0" [interval]="false">
+    <ng-template ngbSlide *ngFor="let photo of produit.photoproduits">
+      <div class="d-flex justify-content-center">
+        
+        <button type="button" class="btn btn-danger btn-lg position-absolute top-0 m-2 " (click)="removeImage(photo.id)"><i class="fa fa-trash"></i></button>
+
+        <img [src]="photo.imageUrl" style="max-height: 500px; width: auto;" class="img-fluid" style="max-height: 200px;">
+
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+        <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label for="nom">{{ 'ProductName' | translate }}</label>
+        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="produit.nom" >
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="codebar">{{ 'BarCode' | translate }}</label>
+        <input type="number" class="form-control" id="codebar" name="codebar" [(ngModel)]="produit.codebar" >
+      </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="description">{{ 'Description' | translate }}</label>
+    <textarea class="form-control" id="description" name="description" [(ngModel)]="produit.description" ></textarea>
+  </div>
+
+      <div class="form-group col-md-6">
+        <label for="color">{{ 'Color' | translate }}</label>
+        <input type="text" class="form-control" id="color" name="color" [(ngModel)]="produit.color" >
+      </div>
+
+
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="price"> {{ 'Price' | translate }}</label>
+    <input type="number" class="form-control" id="price" name="price" [(ngModel)]="produit.prixvente" >
+  </div>
+
+      <div class="form-group col-md-6">
+        <label for="prixFournisseur">{{ 'ProviderPrice' | translate }}</label>
+        <input type="number" class="form-control" id="prixFournisseur" name="prixFournisseur" [(ngModel)]="produit.prixFournisseur" >
+      </div>
+
+     
+</div>
+
+<div class="form-row">
+
+  <div class="form-group col-md-6">
+    <label for="reductionprix">{{ 'PriceReduction' | translate }}</label>
+    <input type="number" class="form-control" id="reductionprix" name="reductionprix" [(ngModel)]="produit.reductionprix" >
+  </div>
+  <div class="form-group col-md-6">
+    <label for="taxe">{{ 'taxe' | translate }}</label>
+    <input type="number" class="form-control" id="taxe" name="taxe" [(ngModel)]="produit.taxe" >
+  </div>
+  
+  
+  </div>
+  
+  <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="category">{{ 'Category' | translate }}</label>
+          <select id="category" name="category" class="form-control" [(ngModel)]="produit.categorieid">
+            <option *ngFor="let category of categories" [value]="category.id">{{category.id}} - {{category.titre}}</option>
+          </select>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label for="dateexpiration">{{ 'ExpirationDate' | translate }}</label>
+          <input type="date" class="form-control" id="dateexpiration" name="dateexpiration"
+            [(ngModel)]="produit.dateexpiration"
+            [ngModelOptions]="{timezone: 'local'}" >
+        </div>
+</div>
+     
+
+      <div class="form-group col-md-6">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="ispiece" name="ispiece" [(ngModel)]="produit.ispiece">
+          <label class="form-check-label" for="ispiece">{{ 'IsPiece' | translate }}</label>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group col-md-6" *ngIf="produit.ispiece">
+          <label for="produitparent">{{ 'IsPieceof' | translate }}: {{ produit?.produitparententity?.nom }}</label>
+          <input type="number" class="form-control" id="produitparent" name="produitparent"  [(ngModel)]="produit.produitparent" (ngModelChange)="onProduitParentChange()" >
+          <p *ngIf="parent"> {{ 'ispieceof' | translate }} {{parent.nom}} !!</p>
+
+        </div>
+    
+      <div class="form-group col-md-6" *ngIf="produit.ispiece">
+        <label for="qteInPacket">{{ 'QuantityinPacket' | translate }}</label>
+        <input type="number" class="form-control" id="qteInPacket" name="qteInPacket" [(ngModel)]="produit.qteInPacket">
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="produitparent">{{ 'photo' | translate }}</label>
+        <input type="file" class="form-control" id="produitparent" name="produitparent" (change)="onFileSelect($event)" multiple>
+      </div>
+
+   
+
+      <button type="submit" class="btn btn-primary">{{ 'updateProduct' | translate }}</button>
+</div>
+    </form>

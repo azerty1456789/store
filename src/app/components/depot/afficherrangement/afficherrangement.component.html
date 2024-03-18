@@ -1,0 +1,18 @@
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-12">
+          <h2> {{ 'rangement' | translate }}: {{depot?.nom}} / {{colonne?.nom}} / {{rangement?.nom}} </h2>
+          <p> {{ 'description' | translate }}: {{rangement?.description}}</p>
+          <p> {{ 'produit' | translate }}: {{produit?.nom}}</p>
+          <p> {{ 'stock' | translate }}: {{rangement?.stock}}</p>
+          <p> {{ 'stockpiece' | translate }}: {{rangement?.stockpiece}}</p>
+
+          <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+          <button class="btn btn-danger mr-2" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+
+
+</div>

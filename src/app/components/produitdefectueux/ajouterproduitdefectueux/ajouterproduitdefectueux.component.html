@@ -1,0 +1,36 @@
+<form (submit)="onSubmit()">
+  
+    <div class="form-group col-md-6">
+        <label for="codebar">Bar Code</label>
+        <input type="text" class="form-control" id="codebar" name="codebar" [(ngModel)]="codebar" (ngModelChange)="getProduitByCodebar()">
+      </div>
+
+
+    <div *ngIf="produit">
+    <h2>{{ 'ProductName' | translate }}: {{produit?.nom}}</h2>
+
+
+
+    <div class="form-row" >
+  
+      <div class="form-group col-md-6" *ngIf="!produit.ispiece">
+        <label for="rangement">{{ 'rangement' | translate }}</label>
+        <select [(ngModel)]="selectedrangement"  class="form-control" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let rangement of rangements" [value]="rangement.id">{{ rangement?.colonne?.depot?.nom }} / {{ rangement?.colonne?.nom }} / {{ rangement?.nom }}</option>
+        </select>
+      </div>
+    
+      <div class="form-group col-md-6" *ngIf="!produit.ispiece">
+    
+        <label for="quantite ">{{ 'quantite' | translate }}</label>
+        <input type="number" class="form-control" id="quantite" name="quantite" [(ngModel)]="quantite">
+      </div>
+    
+    </div>
+   
+  
+  
+  
+    <button type="submit" class="btn btn-primary">{{ 'AddProductdefectueux' | translate }}</button>
+</div>
+  </form>

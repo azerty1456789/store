@@ -1,0 +1,26 @@
+
+  
+  <form (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="nom">{{ 'Name' | translate }}</label>
+      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="newRangement.nom" required>
+    </div>
+    <div class="form-group">
+      <label for="description">{{ 'description' | translate }}</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newRangement.description" required>
+    </div>
+    <div class="form-group">
+        <label for="produit">{{ 'produit' | translate }}</label>
+        <input type="text" class="form-control" id="produit" name="produit" [(ngModel)]="newRangement.idproduit" required>
+        <!--<p>nom produit: {{getproduit()}}</p>-->
+    </div>
+    <div class="form-group">
+      <label for="stockproduit">{{ 'stockproduit' | translate }}</label>
+      <input type="text" class="form-control" id="stockproduit" name="stockproduit" [(ngModel)]="newRangement.stock" required>
+  </div>  
+  <div class="form-group">
+    <label for="stockpiece">{{ 'stockpiece' | translate }}</label>
+    <input type="text" class="form-control" id="stockpiece" name="stockpiece" [(ngModel)]="newRangement.stockpiece" required>
+</div>  
+    <button type="submit" class="btn btn-primary">{{ 'AddRangement' | translate }}</button>
+  </form>

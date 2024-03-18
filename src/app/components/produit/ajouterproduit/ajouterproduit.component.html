@@ -1,0 +1,172 @@
+<form (submit)="onSubmit()">
+  <div class="form-row">
+ 
+    <div class="form-group col-md-6">
+      <label for="nom">{{ 'ProductName' | translate }}</label>
+      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="newProduit.nom">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="codebar">{{ 'BarCode' | translate }}</label>
+      <input type="number" class="form-control" id="codebar" name="codebar" [(ngModel)]="newProduit.codebar">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="scannerCheckbox" name="scannerCheckbox" [(ngModel)]="scanner">
+        <label class="form-check-label" for="scannerCheckbox">
+          {{ 'Enablescanner' | translate }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  
+
+  <div *ngIf="scanner ">
+
+  <div class="scanner-shell" [hidden]="!hasDevices">
+  
+    <header>
+      <div class="form-group">
+        <select class="form-control" (change)="onDeviceSelectChange($event.target.value)">
+          <option value="" [selected]="!currentDevice">{{ 'NoDeviceSelected' | translate }}</option>
+          <option *ngFor="let device of availableDevices" [value]="device.deviceId"
+            [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
+        </select>
+      </div>
+    </header>
+  <zxing-scanner style="width: 300px; height: 200px;"
+   [torch]="torchEnabled"
+   [(device)]="currentDevice" 
+   (scanSuccess)="onCodeResult($event)"
+  [formats]="formatsEnabled" 
+  [tryHarder]="tryHarder" 
+  (permissionResponse)="onHasPermission($event)"
+  (camerasFound)="onCamerasFound($event)"
+   (torchCompatible)="onTorchCompatible($event)">
+  </zxing-scanner>
+  
+    <section class="results" *ngIf="qrResultString">
+      <div>
+        <small>{{ 'Result' | translate }}</small> 
+        <strong>{{ qrResultString }}</strong>
+      </div>
+    </section>
+  </div>
+ 
+  <ng-container *ngIf="hasPermission === false || hasPermission === undefined || hasDevices === undefined || hasDevices === false">
+  
+    <h2>{{ 'Couldntcheckbarcode' | translate }} !! 😪</h2>
+  </ng-container>
+  
+</div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="description">{{ 'Description' | translate }}</label>
+      <textarea class="form-control" id="description" name="description" [(ngModel)]="newProduit.description"></textarea>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="color">{{ 'Color' | translate }}</label>
+      <input type="text" class="form-control" id="color" name="color" [(ngModel)]="newProduit.color">
+    </div>
+
+  </div>
+
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="price">{{ 'Price' | translate }}</label>
+      <input type="number" class="form-control" id="price" name="price" [(ngModel)]="newProduit.prixvente">
+    </div>
+
+    <div class="form-group col-md-6" *ngIf="!newProduit.ispiece">
+      <label for="prixFournisseur">{{ 'ProviderPrice' | translate }}</label>
+      <input type="number" class="form-control" id="prixFournisseur" name="prixFournisseur" [(ngModel)]="newProduit.prixFournisseur">
+    </div>
+
+  </div>
+
+
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+
+      <label for="reductionprix ">{{ 'PriceReduction' | translate }}</label>
+      <input type="number" class="form-control" id="reductionprix" name="reductionprix" [(ngModel)]="newProduit.reductionprix">
+    </div>
+
+
+    <div class="form-group col-md-6">
+
+      <label for="taxe ">{{ 'Taxe' | translate }}</label>
+      <input type="number" class="form-control" id="taxe" name="taxe" [(ngModel)]="newProduit.taxe">
+    </div>
+
+  
+  </div>
+  <div class="form-row">
+
+  <div class="form-group col-md-6">
+    <label for="category">{{ 'Category' | translate }}</label>
+    <select id="category" name="category" class="form-control" [(ngModel)]="newProduit.categorieid">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.id}} - {{category.titre}}</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="dateexpiration">{{ 'ExpirationDate' | translate }}</label>
+    <input type="date" class="form-control" id="dateexpiration" name="dateexpiration" [(ngModel)]="newProduit.dateexpiration">
+  </div>
+
+</div>
+    <div class="form-group col-md-6">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="ispiece" name="ispiece" [(ngModel)]="newProduit.ispiece">
+        <label class="form-check-label" for="ispiece">{{ 'IsPiece' | translate }}</label>
+      </div>
+    </div>
+  <div class="form-row">
+
+    <div class="form-group col-md-6" *ngIf="newProduit.ispiece">
+      <label for="produitparent">{{ 'IsPieceof' | translate }}</label>
+      <input type="number" class="form-control" id="produitparent" name="produitparent"  [(ngModel)]="newProduit.produitparent" (ngModelChange)="onProduitParentChange()">
+      <p *ngIf="parent"> {{ 'ispieceof' | translate }} {{parent.nom}} !!</p>
+    </div>
+
+  <div class="form-group col-md-6" *ngIf="newProduit.ispiece">
+    <label for="qteInPacket">{{ 'QuantityinPacket' | translate }}</label>
+    <input type="number" class="form-control" id="qteInPacket" name="qteInPacket" [(ngModel)]="newProduit.qteInPacket">
+  </div>
+  </div>
+  <div class="form-row">
+
+    <div class="form-group col-md-6" *ngIf="!newProduit.ispiece">
+      <label for="selectedDepot">{{ 'colonne' | translate }}</label>
+      <select [(ngModel)]="selectedColonne"  class="form-control" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let colonne of colonnes" [value]="colonne.id">{{ colonne.nom }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-6" *ngIf="!newProduit.ispiece">
+  
+      <label for="stock ">{{ 'stock' | translate }}</label>
+      <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="stock">
+    </div>
+  
+  </div>
+  <div class="form-group">
+    <label for="produitparent">{{ 'photo' | translate }}</label>
+    <input type="file" class="form-control" id="produitparent" name="produitparent" (change)="onFileSelect($event)" multiple>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">{{ 'AddProduct' | translate }}</button>
+
+</form>

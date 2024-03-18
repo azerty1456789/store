@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <h2>{{ 'numero' | translate }} {{devis?.id}}</h2>
+          <p>{{ 'Date' | translate }}: {{devis?.datedevis | date: 'dd/MM/yyyy à HH:mm:ss'}}</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <img src="favicon.ico" alt="Logo" height="50" width="auto" />
+          <h3>MskStore</h3>
+          <p>{{ 'Tél' | translate }}: 51019923</p>
+        </div>
+      </div>
+     
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <h4>{{ 'Lignesdeproduits' | translate }}:</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{{ 'Produit' | translate }}</th>
+                  <th>{{ 'Quantité' | translate }}</th>
+                  <th>{{ 'Prixunitaire' | translate }} </th>
+                  <th>{{ 'Total' | translate }} </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ligne of devis?.devisligneproduit">
+                  <td>{{ ligne.produit?.nom }}</td>
+                  <td>{{ ligne.quantite }}</td>
+                  <td>{{ ligne.prix }}</td>
+                  <td>{{ (ligne.prix * ligne.quantite) }} </td>
+  
+                </tr>
+               
+              </tbody>
+            </table>
+           
+          </div>
+        </div>
+      </div>
+      <hr />
+      <table class="float-right">
+        <tr>
+          <td ><h2>{{ 'Total' | translate }}:</h2></td>
+          <td><h3>{{devis?.total }}</h3></td>
+        </tr>
+        
+        <hr/>
+        <button class="btn btn-primary mr-2" (click)="onValidate()">{{ 'validate' | translate }}</button>
+
+            <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+     
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,22 @@
+<form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="debut">{{ 'Montantdedébut' | translate }}</label>
+        <input type="text" class="form-control" id="debut" name="debut" [(ngModel)]="newFermeturecaisse.montantdebut" required>
+
+      </div>
+      <div class="form-group">
+        <label for="totalcash">{{ 'totalcash' | translate }}</label>
+        <input type="text" class="form-control" id="totalcash" name="totalcash" [(ngModel)]="newFermeturecaisse.totalcash" required>
+      </div>
+      <div class="form-group">
+        <label for="totalcheck">{{ 'totalcheck' | translate }}</label>
+        <input type="text" class="form-control" id="totalcheck" name="totalcheck" [(ngModel)]="newFermeturecaisse.totalcheck" required>
+      </div>
+      <div class="form-group">
+        <label for="totalticketresto">{{ 'totalticketresto' | translate }}</label>
+        <input type="text" class="form-control" id="totalticketresto" name="totalticketresto" [(ngModel)]="newFermeturecaisse.totalticketresto" required>
+      </div>
+      
+    
+    <button type="submit" class="btn btn-primary">{{ 'Addfermeturecaisse' | translate }}</button>
+  </form>

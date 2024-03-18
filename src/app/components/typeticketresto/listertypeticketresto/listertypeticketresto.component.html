@@ -1,0 +1,34 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'Show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'nom' | translate }}</th>
+        <th>{{ 'montant' | translate }}</th>
+        <th>{{ 'pourcentage' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let typeticketresto of typeticketrestos | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+  
+        <td><a [routerLink]="['/affichertypeticketresto', typeticketresto.id]">{{ typeticketresto.id }}</a></td>
+        <td>{{ typeticketresto.nom }}</td>
+        <td>{{ typeticketresto.montant }}</td>
+        <td>{{ 100-typeticketresto.pourcentage }}</td>
+  
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="pagination">
+    <pagination-controls (pageChange)="paginate($event)" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>
+  

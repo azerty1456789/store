@@ -1,0 +1,47 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'Show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+</div>
+<div class="float-right mr-3 my-2">
+  <label>{{ 'Category' | translate }}</label>
+  <select class="form-control" [(ngModel)]="selectedCategorieId" (change)="filterByCategorie()">
+    <option value=0 selected>All</option>
+    <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.titre }}</option>
+  </select>
+</div>
+<div class="float-left mr-3 my-2">
+  <label>{{ 'Barcode' | translate }}</label>
+  <div class="input-group">
+    <input type="text" class="form-control " [(ngModel)]="searchBarcode" >
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchByBarcode()">Search</button>
+    </div>
+  </div>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'Name' | translate }}</th>
+        <th>{{ 'Category' | translate }}</th>
+        <th>{{ 'Price' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of produits | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+        <td><a [routerLink]="['/afficherproduit', produit.id]">{{produit.id}}</a></td>
+        <td>{{ produit.nom }}</td>
+        <td>{{ produit.categorieid }} - {{ getCategorie(produit.categorieid)?.titre }}</td>
+        <td>{{ produit.prixvente }}</td>
+        
+      </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+</div>

@@ -1,0 +1,31 @@
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>{{user?.name}} {{user?.lastName}}</h2>
+            <p>{{ 'email' | translate }}: {{user?.email}}</p>
+            <p>{{ 'phone' | translate }}: {{user?.phone}}</p>
+            <p>{{ 'role' | translate }}: {{user?.role}}</p>
+  
+            <ng-container *ngIf="user?.role === 'Employee'">
+              <p>{{ 'cin' | translate }}: {{user?.cin}}</p>
+              <p>{{ 'typecontrat' | translate }}: {{user?.typecontrat}}</p>
+              <p>{{ 'salaire' | translate }}: {{user?.salaire}}</p>
+              <p>{{ 'salairebrut' | translate }}: {{user?.salairebrut}}</p>
+              <p>{{ 'permission' | translate }}: 
+                {{salePermission ? 'Sale Permission, ' : ''}}
+                {{depositPermission ? 'Deposit Permission, ' : ''}}
+                {{providerPermission ? 'Provider Permission' : ''}}
+              </p>
+            </ng-container>
+            
+  
+            <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+            <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+          </div>
+          <div class="col-md-6">
+            <img class="img-thumbnail" src="{{user?.photo}}" alt="Photo">
+          </div>
+        </div>
+      </div>
+    </div>

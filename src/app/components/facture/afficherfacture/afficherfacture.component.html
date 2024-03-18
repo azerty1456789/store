@@ -1,0 +1,116 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <h2>{{ 'numero' | translate }} {{factureclient?.id}}</h2>
+        <p>{{ 'Date' | translate }}: {{factureclient?.datefacture | date: 'dd/MM/yyyy à HH:mm:ss'}}</p>
+        <p>{{ 'cachier' | translate }}: {{username}}</p>
+        <p>{{ 'Client' | translate }}: {{clientName}} </p>
+        <p>{{ 'Modedepaiement' | translate }}: {{factureclient?.modepayment}} </p>
+        <p>{{ 'Cettefactureestassujettieàuntimbrefiscalde' | translate }} {{factureclient?.timbrefiscal}}  </p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <img src="favicon.ico" alt="Logo" height="50" width="auto" />
+        <h3>MskStore</h3>
+        <p>{{ 'Tél' | translate }}: 51019923</p>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>{{ 'Détailsdelafacture' | translate }}:</h4>
+        <table>
+          <tr>
+            <td><strong>{{ 'Total' | translate }}:</strong></td>
+            <td>{{factureclient?.total }}</td>
+          </tr>
+         
+          <tr *ngIf="factureclient?.modepayment=='ticket' ||factureclient?.modepayment=='ticket&credit'">
+            <td><strong>{{ 'totalpaidwithticketresto' | translate }}:</strong></td>
+            <td>{{factureclient?.totalticketresto}}</td>
+          </tr>
+          <tr *ngIf="factureclient?.modepayment=='ticket'">
+            <td><strong>{{ 'totalpaidwithcash' | translate }}:</strong></td>
+            <td>{{factureclient?.total-factureclient?.totalticketresto}}</td>
+          </tr>
+          <tr *ngIf="factureclient?.modepayment=='ticket&credit'">
+            <td><strong>{{ 'totalcredit' | translate }}:</strong></td>
+            <td>{{factureclient?.total-factureclient?.totalticketresto}}</td>
+          </tr>
+          <tr *ngIf="factureclient?.modepayment=='check'">
+            <td><strong>{{ 'checkproprietaire' | translate }}:</strong></td>
+            <td>{{factureclient?.checkproprietaire}}</td>
+          </tr>
+          <tr *ngIf="factureclient?.modepayment=='check'">
+            <td><strong>{{ 'checkcompte' | translate }}:</strong></td>
+            <td>{{factureclient?.checkcompte}}</td>
+          </tr>
+
+       
+        </table>
+      </div>
+      <div class="col-md-6">
+
+
+
+<div *ngIf="factureclient?.modepayment=='ticket'||factureclient?.modepayment=='ticket&credit'" class="table-responsive">
+  <p><strong>{{ 'detailticketresto' | translate }}</strong></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{ 'code' | translate }}</th>
+        <th>{{ 'type' | translate }}</th>
+        <th> {{ 'valeur' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ligne of factureclient?.ticketrestos">
+        <td> {{ ligne.code}}</td>
+        <td>{{ getTypeticketrestoNom(ligne.typeticketrestoid) }}</td>
+        <td>{{ getTypeticketrestovaleur(ligne.typeticketrestoid) }}</td>
+       
+
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <h4>{{ 'Lignesdeproduits' | translate }}:</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{{ 'Produit' | translate }}</th>
+                <th>{{ 'Quantité' | translate }}</th>
+                <th> {{ 'Prixunitaire' | translate }}</th>
+                <th> {{ 'Total' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ligne of factureclient?.factureligneProduits">
+                <td>{{ ligne.produit?.nom }}</td>
+                <td>{{ ligne.quantite }}</td>
+                <td>{{ ligne.prix }}</td>
+                <td>{{ (ligne.prix * ligne.quantite) }} </td>
+
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>

@@ -1,0 +1,73 @@
+    <form (submit)="onSubmit()">
+        <div *ngIf="user">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">{{ 'FirstName' | translate }}</label>
+          <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="user.name" >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">{{ 'LastName' | translate }}</label>
+          <input type="text" class="form-control" id="lastname" name="lastname"  [(ngModel)]="user.lastName" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="role">{{ 'role' | translate }}</label>
+          <select id="role" name="role" class="form-control" [(ngModel)]="user.role" required>
+            <option value="Admin">{{ 'admin' | translate }}</option>
+            <option value="Employee">{{ 'employee' | translate }}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">{{ 'email' | translate }}</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" autocomplete="off">
+        </div>
+      </div>
+            <div class="form-group">
+        <label for="phone">{{ 'phone' | translate }}</label>
+        <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone" required>
+      </div>
+      <div class="form-group">
+        <label for="photo">{{ 'photo' | translate }}</label>
+        <input type="text" class="form-control" id="photo" name="photo" [(ngModel)]="user.photo">
+      </div>
+      <div class="form-group" *ngIf="user.role === 'Employee'">
+        <label for="cin">{{ 'cin' | translate }}</label>
+        <input type="number" class="form-control" id="cin" name="cin" [(ngModel)]="user.cin">
+      </div>
+      <div class="form-group" *ngIf="user.role === 'Employee'">
+        <label for="typecontrat">{{ 'typecontrat' | translate }}</label>
+        <input type="text" class="form-control" id="typecontrat" name="typecontrat" [(ngModel)]="user.typecontrat">
+      </div>
+      <div class="form-group" *ngIf="user.role === 'Employee'">
+        <label for="salaire">{{ 'salaire' | translate }}</label>
+        <input type="number" class="form-control" id="salaire" name="salaire" [(ngModel)]="user.salaire">
+      </div>
+      <div class="form-group"*ngIf="user.role === 'Employee'">
+        <label for="salairebrut">{{ 'salairebrut' | translate }}</label>
+        <input type="number" class="form-control" id="salairebrut" name="salairebrut" [(ngModel)]="user.salairebrut">
+      </div>
+      <div class="form-group" *ngIf="user.role === 'Employee'">
+        <label for="permission">{{ 'permission' | translate }}</label>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>{{ 'Sale' | translate }}</th>
+              <th>{{ 'Deposit' | translate }}</th>
+              <th>{{ 'Provider' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" name="sale" [(ngModel)]="salePermission"></td>
+              <td><input type="checkbox" name="deposit" [(ngModel)]="depositPermission"></td>
+              <td><input type="checkbox" name="provider" [(ngModel)]="providerPermission"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ 'update' | translate }}</button>
+    </div>
+      </form>
+      
+  

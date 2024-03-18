@@ -1,0 +1,35 @@
+<form (submit)="submit()">
+    <div class="modal-header">
+        <h4 class="modal-title">{{ 'quickAddClient' | translate }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">{{ 'firstName' | translate }}</label>
+                <input type="text" class="form-control" id="firstname" name="name" [(ngModel)]="newClient.name"
+                    required>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">{{ 'lastName' | translate }}</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="newClient.lastname"
+                    required>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="Phone">{{ 'Phone' | translate }}</label>
+            <input type="number" class="form-control" id="Phone" name="Phone" [(ngModel)]="newClient.credit" required>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">{{ 'Close' | translate }}</button>
+        <button type="submit" class="btn btn-primary">{{ 'AddCustomer' | translate }}</button>
+    </div>
+</form>

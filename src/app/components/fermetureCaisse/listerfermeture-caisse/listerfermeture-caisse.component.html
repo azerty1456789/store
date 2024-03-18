@@ -1,0 +1,45 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'Show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'Date' | translate }}</th>
+        <th>{{ 'Montantdedébut' | translate }}</th>
+        <th>{{ 'Employé' | translate }}</th>
+        <th>{{ 'Dernièrefacture' | translate }}</th>
+        <th>{{ 'Total' | translate }}</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fermeture  of fermetures | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+
+          <td><a [routerLink]="['/afficherfermeturecaisse', fermeture.id]">{{fermeture.id}}</a></td>
+
+          <td>{{ fermeture.datefermeture| date: 'dd/MM/yyyy à HH:mm:ss' }}</td>
+          
+          <td>{{ fermeture.montantdebut }}</td>
+          <td>{{ fermeture.employee?.nom }}</td>
+          <td>{{ fermeture.dernierefactureid }}</td>
+          <td>{{ fermeture.totalcash+fermeture.totalcheck+fermeture.totalticketresto }}</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>
+  
+  

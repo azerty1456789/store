@@ -1,0 +1,34 @@
+<form (submit)="onModify()">
+    <div *ngIf="depot">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="name">{{ 'Name' | translate }}</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
+                    [(ngModel)]="depot.nom">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="adresse">{{ 'Adresse' | translate }}</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Enter Adresse"
+                    [(ngModel)]="depot.adresse" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="type">{{ 'type' | translate }}</label>
+                <select id="type" name="type" class="form-control" [(ngModel)]="depot.type">
+                    <option [value]="'vente'">{{ 'SalesDepot' | translate }}</option>
+                    <option [value]="'stockage'">{{ 'StorageDepot' | translate }}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="description">{{ 'description' | translate }}</label>
+                <input type="text" class="form-control" id="description" name="description"
+                    placeholder="Enter Description" [(ngModel)]="depot.description">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ 'UpdateDepot' | translate }}</button>
+    </div>

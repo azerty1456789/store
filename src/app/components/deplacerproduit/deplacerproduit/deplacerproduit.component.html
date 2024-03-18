@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-body">  
+            <label>{{ 'Barcode' | translate }}</label>
+            <div class="input-group">
+                <input type="text" class="form-control " [(ngModel)]="barcode">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="searchByBarcode()">Search</button>
+                </div>
+            </div>
+
+      <p *ngIf="produit" >{{ 'Produit' | translate }}: {{produit.nom}}</p>
+    <br>
+      <form>
+       
+
+<div class="row" *ngIf="rangements">
+    <div class="col-md-6">
+        <div class="form-group">
+
+        <label for="rangementFrom">{{ 'origine' | translate }}:</label>
+        <select id="rangementFrom" name="rangementFrom" [(ngModel)]="selectedRangementFrom" (change)="onChangeRangementFrom()"  class="form-control">
+          <option *ngFor="let rangement of rangements" [value]="rangement.id">{{rangement.nom}}</option>
+        </select>
+        <p *ngIf="colonnefrom">{{ 'colonne' | translate }}: {{colonnefrom.nom}}</p>
+        <p *ngIf="depotfrom"> {{ 'depot' | translate }}: {{depotfrom.nom}}</p>
+        <p *ngIf="rangementfrom"> {{ 'stock' | translate }}: {{rangementfrom.stock}}</p>
+
+  </div></div>
+        <div class="col-md-6">
+            <div class="form-group">
+
+        <label for="rangementTo">{{ 'destination' | translate }}:</label>
+        <select id="rangementTo" name="rangementTo" [(ngModel)]="selectedRangementTo" (change)="onChangeRangementTo()"  class="form-control">
+          <option *ngFor="let rangement of rangements" [value]="rangement.id">{{rangement.nom}}</option>
+        </select>
+        <p *ngIf="colonneto">{{ 'colonne' | translate }}: {{colonneto.nom}}</p>
+        <p *ngIf="depotto"> {{ 'depot' | translate }}: {{depotto.nom}}</p>
+        <p *ngIf="rangementto"> {{ 'stock' | translate }}: {{rangementto.stock}}</p>
+
+        </div>
+  </div>
+  <label for="quantity">{{ 'Quantité' | translate }}:</label>
+  <input type="number" id="quantity" name="quantity" [(ngModel)]="quantity" class="form-control">
+</div>
+<br>
+<div>
+<button class="btn btn-primary" type="submit" (click)="moveProduct()">{{ 'Déplacer' | translate }}</button>
+</div>
+      </form>
+    </div>
+  </div>

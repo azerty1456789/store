@@ -1,0 +1,40 @@
+<div class="card">
+
+    <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-12">
+          <h2> {{ 'Depot' | translate }}: {{depot?.nom}} </h2>
+          <p> {{ 'adresse' | translate }}: {{depot?.adresse}}</p>
+          <p> {{ 'type' | translate }}: {{depot?.type}}</p>
+          <p> {{ 'description' | translate }}: {{depot?.description}}</p>
+          <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+          <button class="btn btn-danger mr-2" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+          <button class="btn btn-success" (click)="onCreateColonne()">{{ 'AddColumn' | translate }}</button>
+
+</div>
+<hr>
+
+        <h3>{{ 'Columns' | translate }}</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{{ 'Name' | translate }}</th>
+              <th>{{ 'Description' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let colonne of colonnes">
+              <td><a [routerLink]="['/affichercolonne', colonne.id]">{{colonne.id}}</a></td>
+              <td>{{depot?.nom}} / {{ colonne.nom }}</td>
+              <td>{{ colonne.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      </div>
+    </div>
+ 

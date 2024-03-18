@@ -1,0 +1,34 @@
+    <form (submit)="onSubmit()">
+
+
+      <div class="form-group" *ngIf="categorie">
+        <label for="title">{{ 'Title' | translate }}</label>
+        <input type="text" class="form-control" id="titre" name="titre" placeholder="Enter Title" [(ngModel)]="categorie.titre">
+      </div>
+
+
+
+
+
+      <div class="form-group"  *ngIf="categorie">
+        <label for="description">{{ 'Description' | translate }}</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" [(ngModel)]="categorie.description" ></textarea>
+      </div>
+      
+      <div class="form-group"  *ngIf="categorie">
+        <label for="parent">{{ 'Parent' | translate }}</label>
+        <select id="parentCategory" name="parentCategory" class="form-control" [(ngModel)]="categorie.parentid" (ngModelChange)="onParentCategorySelected()">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.titre }}</option>
+      </select>
+          </div>
+
+
+     
+    
+
+
+      
+      <button type="submit" class="btn btn-primary">{{ 'UpdateCategory' | translate }}</button>
+    </form>
+
+  

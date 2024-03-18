@@ -1,0 +1,28 @@
+<form (submit)="onModify()">
+    <div *ngIf="colonne">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="name">{{ 'Name' | translate }}</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
+                    [(ngModel)]="colonne.nom">
+            </div>
+
+   
+           
+            <div class="form-group col-md-6">
+                <label for="description">{{ 'Description' | translate }}</label>
+                <input type="text" class="form-control" id="description" name="description"
+                    placeholder="Enter Description" [(ngModel)]="colonne.description">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="depot">{{ 'depot' | translate }}: </label>
+            <select id="depot" name="depot" class="form-control" [(ngModel)]="colonne.iddepot">
+                <option *ngFor="let depot of depots" [value]="depot.id" [selected]="depot.id === colonne.iddepot">{{ depot.nom }}</option>
+              </select>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ 'Updatecolonne' | translate }}</button>
+    </div>
+    

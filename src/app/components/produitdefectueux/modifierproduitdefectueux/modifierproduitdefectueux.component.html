@@ -1,0 +1,14 @@
+<form (submit)="onSubmit()">
+    <div *ngIf="produitdefectueux">
+        <h2>{{ 'ProductName' | translate }}: {{produitdefectueux?.produit?.nom}}</h2>
+
+    <div class="form-group">
+        <label for="quantite">{{ 'quantite' | translate }}</label>
+        <input type="number" class="form-control" id="quantite" name="quantite"  [(ngModel)]="produitdefectueux.quantite" >
+     
+    </div>
+   
+    <button type="submit" class="btn btn-primary">{{ 'update' | translate }}</button>
+    </div>
+  </form>
+  

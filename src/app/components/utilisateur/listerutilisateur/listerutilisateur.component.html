@@ -1,0 +1,44 @@
+<div class="float-right mr-3 my-2">
+    <label>{{ 'show' | translate }}</label>
+    <select class="form-control" [(ngModel)]="pageSize" (change)="paginate($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'FirstName' | translate }}</th>
+        <th>{{ 'LastName' | translate }}</th>
+        <th>{{ 'role' | translate }}</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+
+          <td><a [routerLink]="['/afficherutilisateur', user.id]">{{user.id}}</a></td>
+
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.role }}</td>
+
+
+        
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="<" nextLabel=">"></pagination-controls>
+  </div>
+  
+  
+
+

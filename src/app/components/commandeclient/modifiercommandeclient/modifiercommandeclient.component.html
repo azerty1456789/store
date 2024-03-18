@@ -1,0 +1,57 @@
+<div *ngIf="commandeclient">
+    <h2>{{ 'numero' | translate }} {{commandeclient?.id}}</h2>
+
+    <p *ngIf="clientweb">{{ 'client' | translate }}: {{ clientweb.nom }} </p>
+    <p *ngIf="clientweb">{{ 'adresse' | translate }}: {{ clientweb.adresse }} </p>
+    <p *ngIf="clientweb">{{ 'Tél' | translate }}: {{ clientweb.telephone }} </p>
+    <p *ngIf="clientweb">{{ 'email' | translate }}: {{ clientweb.email }} </p>
+
+    <div class="form-group">
+      <label for="etat">{{ 'etat' | translate }}:</label>
+      <select class="form-control" id="etat" name="etat"
+              [(ngModel)]="etat">
+        <option *ngFor="let etat of etats" [value]="etat">{{etat}}</option>
+      </select>
+    </div>
+    
+  
+    <hr> <!-- optional visual separator -->
+  
+
+  
+  
+    <table class="table" *ngIf="commandeclient.commandeligneclient[0]">
+      <thead>
+        <tr>
+          <th>{{ 'Produit' | translate }}</th>
+          <th>{{ 'Quantité' | translate }}</th>
+          <th>{{ 'Prixunitaire' | translate }}</th>
+          <th>{{ 'Total' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commandeLigneclient of commandeclient?.commandeligneclient">
+          <td>{{commandeLigneclient?.produit?.nom}}</td>
+          <td>{{commandeLigneclient?.quantite}}</td>
+          <td>{{commandeLigneclient?.prix}}</td>
+  
+          <td>{{commandeLigneclient.quantite*commandeLigneclient.prix}}</td>
+        
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><h4>{{ total }}</h4></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  <hr> <!-- optional visual separator -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ 'updatecommande' | translate }}</button>
+    </div>
+</div>
+  

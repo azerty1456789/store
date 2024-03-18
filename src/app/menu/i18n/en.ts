@@ -1,0 +1,35 @@
+export const locale = {
+  lang: 'en',
+  data: {
+    MENU: {
+      Sale: "Sale",
+    checkout: "Checkout",
+    Invoice: "Invoice",
+    paycredit: "Credits",
+    Customer:"Customer",
+    add:'add',
+    view:'list',
+    CashierClosing:"Cashier Closing",
+    Products:"Products",
+    Product:"Product",
+    Category:"Category",
+    Deposits:"Deposits",
+    adddeposits:"add deposits",
+    addColumn:"add column",
+    addStorage:"add storage",
+    Provider:"Provider",
+    ProviderInvoice:"Provider invoice",
+    Administration:"Administration",
+    User:"User",
+    Report:"Report",
+    typeticketresto:"Restaurant Ticket", 
+    CustomerOrder:"Customer Order",
+    devis: "Estimate",
+    inventaire:"Inventory",
+    deplacerproduit:"Move a product",
+produitdefectueux:"Defective product",
+timbrefiscal:"tax stamp",
+ProviderCommande:"Suppliers s'purchases ",
+    }
+  }
+}

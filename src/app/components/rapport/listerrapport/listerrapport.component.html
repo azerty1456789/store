@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{ 'Rapport' | translate }}</h1>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="fromDate">{{ 'From' | translate }}:</label>
+                <input type="date" class="form-control" id="fromDate" [(ngModel)]="fromDate" [ngModelOptions]="{standalone: true}">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="toDate">{{ 'To' | translate }}:</label>
+                <input type="date" class="form-control" id="toDate" [(ngModel)]="toDate" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <button class="btn btn-success mr-1" (click)="generateReport()">{{ 'generateReport' | translate }}</button>
+          </form>
+          
+      </div>
+    </div>
+
+  <div *ngIf="rapport">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>{{ 'TotalSell' | translate }}: {{totalSell}}</h3>
+      </div>
+      <div class="col-md-6">
+        <h3>{{ 'TotalRevenue' | translate }}: {{totalRevenue}}</h3>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6">
+        <h4>{{ 'Mostsoldproducts' | translate }}:</h4>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>{{ 'ProductName' | translate }}</th>
+                <th>{{ 'QuantitySold' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let produit of mostSoldProducts">
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.quantitySold }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+
+      <div class="col-md-6">
+        <h4>{{ 'MostProfitableProducts' | translate }}</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{ 'ProductName' | translate }}</th>
+              <th>{{ 'Revenue' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of mostProfitableProducts">
+              <td>{{product.nom}}</td>
+              <td>{{product.totalRevenue }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <h2>{{ 'ProductsNotSold' | translate }}</h2>
+        <ul>
+          <li *ngFor="let product of unsoldProducts">{{product.nom}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

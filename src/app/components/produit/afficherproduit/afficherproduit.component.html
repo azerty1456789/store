@@ -1,0 +1,72 @@
+<div class="card">
+
+
+
+ 
+
+
+
+
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-md-6">
+        <h2>{{ 'ProductName' | translate }}: {{produit?.nom}}</h2>
+        <p>{{ 'BarCode' | translate }}: {{produit?.codebar}} 
+          <button class="btn btn-primary btn-sm mr-2" (click)="printqrcode()">{{ 'printQRcode' | translate }}</button>
+          <button class="btn btn-primary btn-sm mr-2" (click)="printbarcode()">{{ 'printbarcode' | translate }}</button>
+
+        </p>
+        <div class="row" *ngIf="produit?.codebar">
+          <div class="col-md-6">
+            <div id="qrcode"  #qrcode>
+              <qrcode [qrdata]="produit?.codebar?.toString()"[elementType]="'svg'"[width]="100" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div id="barcode">
+              <ngx-barcode [bc-value]="produit?.codebar" bc-format="code128" [bc-height]="77" [bc-width]="1.3"></ngx-barcode>
+            </div>
+
+          </div>
+        </div>
+
+        <p>{{ 'Color' | translate }}: {{produit?.color}}</p>
+        <p>{{ 'Description' | translate }}: {{produit?.description}}</p>
+
+        <p>{{ 'ProviderPrice' | translate }}: {{produit?.prixFournisseur}}</p>
+        <p>{{ 'PacketPrice' | translate }}: {{produit?.prixvente}}</p>
+        <p>{{ 'PriceReduction' | translate }}: {{produit?.reductionprix}}</p>
+        <p>{{ 'Tax' | translate }}: {{produit?.taxe}}</p>
+
+        <p>{{ 'ExpirationDate' | translate }}: {{produit?.dateexpiration}}</p>
+        <p>{{ 'Category' | translate }}: {{produit?.categorieid}}</p>
+        <p *ngIf="produit?.ispiece"> {{ 'ispieceof' | translate }}{{produit?.produitparent}}-{{produitparent?.nom}}</p>
+        <p *ngIf="produit?.ispiece">{{ 'QuantityinPacket' | translate }}: {{produit?.qteInPacket}}</p>
+
+        <p *ngIf="!produit?.ispiece">{{ 'Rangements' | translate }}:</p>
+        <ul *ngIf="!produit?.ispiece">
+          <li *ngFor="let rangement of rangements">{{ getDepotnom(rangement.idcolonne)}}
+            / {{ getColonnenom(rangement.idcolonne) }}
+            / <a [routerLink]="['/afficherrangement', rangement.id]">{{ rangement.nom }}</a>
+            :  {{ 'stock' | translate }} = {{ rangement.stock }} </li>
+        </ul>
+
+      </div>
+      <div class="col-md-6">
+
+        <ngb-carousel *ngIf="produit?.photoproduits.length>0" [interval]="false">
+          <ng-template ngbSlide *ngFor="let photo of produit.photoproduits">
+            <div class="d-flex justify-content-center">
+              <img [src]="photo.imageUrl" style="max-height: 400px;">
+            </div>
+          </ng-template>
+        </ngb-carousel>
+       
+      </div>
+      <button class="btn btn-primary mr-2" (click)="onModify()">{{ 'Modify' | translate }}</button>
+      <button class="btn btn-danger" (click)="onDelete()">{{ 'Delete' | translate }}</button>
+    </div>
+  </div>
+</div>

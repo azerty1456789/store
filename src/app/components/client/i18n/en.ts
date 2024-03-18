@@ -1,0 +1,27 @@
+export const locale = {
+	lang: 'en',
+	data: {
+		Priority: "Priority",
+		Gender: "Gender",
+		Phone: "Phone",
+		Email: "Email",
+		Address: "Address",
+		Credit: "Credit",
+		Modify: "Modify",
+		Delete: "Delete",
+		save:"save",
+		firstName:"First Name",
+		lastName:"Last Name",
+		Low:"Low",
+		Medium:"Medium",
+		High:"High",
+		Male:"Male",
+		Female:"Female",
+		photo:"Photo",
+		AddCustomer:"Add Customer",
+		Show:"Show",
+		update:"Update",
+		Close:"Close",
+		quickAddClient:"Quick Add client"
+	},
+}
